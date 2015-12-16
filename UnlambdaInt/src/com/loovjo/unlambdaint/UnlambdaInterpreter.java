@@ -64,7 +64,7 @@ public class UnlambdaInterpreter {
 	public static void main(String[] args) {
 		HashMap<String, Object> arguments = ArgParser.readValues(args);
 
-		if (arguments.containsKey("help")) {
+		if (arguments.containsKey("help") || arguments.isEmpty()) {
 			if ((boolean) arguments.get("help")) {
 				help();
 				System.exit(0);
