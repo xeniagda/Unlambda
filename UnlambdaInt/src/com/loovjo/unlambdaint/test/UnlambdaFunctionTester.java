@@ -26,7 +26,12 @@ public class UnlambdaFunctionTester {
 		assertEquals("`.c`.b.c", ((TargetedUnlambdaFunction)((UnlambdaApplyFunction) scan("``.a.c`.b.c").findAndSetTarget().getFirst()).applyToTarget()).getUnlCode(false));
 		
 	}
-
+	
+	@Test
+	public void testIO() {
+		
+	}
+	
 	private TargetedUnlambdaFunction scan(String code) {
 		return new DefaultFunctionScanner().scanSymbolWithLength(code).getFirst();
 	}

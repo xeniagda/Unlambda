@@ -5,6 +5,7 @@ import com.loovjo.unlambdaint.function.functions.UnlambdaFunction;
 import com.loovjo.unlambdaint.function.functions.added.UnlambdaFunctionLambda;
 import com.loovjo.unlambdaint.function.functions.added.UnlambdaFunctionVariable;
 import com.loovjo.unlambdaint.function.functions.defaults.UnlambdaApplyFunction;
+import com.loovjo.unlambdaint.function.functions.defaults.UnlambdaDFunction;
 import com.loovjo.unlambdaint.function.functions.defaults.UnlambdaIFunction;
 import com.loovjo.unlambdaint.function.functions.defaults.UnlambdaKFunction;
 import com.loovjo.unlambdaint.function.functions.defaults.UnlambdaPrintFunction;
@@ -47,6 +48,8 @@ public class DefaultFunctionScanner implements FunctionScanner {
 			return new Pair<TargetedUnlambdaFunction, Integer>(new UnlambdaKFunction(), 1);
 		case 'i':
 			return new Pair<TargetedUnlambdaFunction, Integer>(new UnlambdaIFunction(), 1);
+		case 'd':
+			return new Pair<TargetedUnlambdaFunction, Integer>(new UnlambdaDFunction(), 1);
 		case '$':
 			return new Pair<TargetedUnlambdaFunction, Integer>(new UnlambdaFunctionVariable(code.charAt(1)), 2);
 		case '`':

@@ -19,7 +19,8 @@ import com.loovjo.unlambdaint.gui.UnlambdaInterfaceGui;
 public class UnlambdaInterpreter {
 
 	public static String output = "";
-
+	public static String input = "Jonathan";
+	
 	public FunctionScanner scanner = new DefaultFunctionScanner();
 
 	public TargetedUnlambdaFunction root;
@@ -77,7 +78,7 @@ public class UnlambdaInterpreter {
 		if (arguments.containsKey("file")) {
 			in = readFile((String) arguments.get("file"));
 		}
-		in = in.replaceAll("<add>", "`s``s`ksk");
+		in = in.replaceAll("<inc>", "`s``s`ks``s`kki");
 		if (arguments.containsKey("terminal")) {
 			new UnlambdaInterfaceTerminal(new UnlambdaInterpreter(in)).start();
 		} else if (arguments.containsKey("gui")) {

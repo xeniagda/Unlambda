@@ -1,5 +1,6 @@
 package com.loovjo.unlambdaint.test;
 
+import com.loovjo.unlambdaint.UnlambdaInterpreter;
 import com.loovjo.unlambdaint.function.DefaultFunctionScanner;
 import com.loovjo.unlambdaint.function.functions.TargetedUnlambdaFunction;
 
@@ -9,8 +10,10 @@ import com.loovjo.unlambdaint.function.functions.TargetedUnlambdaFunction;
 public class RandomTesting {
 
 	public static void main(String[] args) {
-		System.out.println(scan("^f ^x `$f`$f$x")
-				.recursiveAbstractionElimination(' ').getUnlCode(false));
+		UnlambdaInterpreter i = new UnlambdaInterpreter("");
+		while (i.cycle());
+		System.out.println("Code: " + i.root.getUnlCode(false));
+		System.out.println("Out: " + i.output);
 	}
 
 	private static TargetedUnlambdaFunction scan(String code) {

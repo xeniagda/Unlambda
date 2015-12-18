@@ -23,6 +23,10 @@ public abstract class TargetedUnlambdaFunction implements UnlambdaFunction {
 		return "NonImplemented.";
 	}
 	
+	public boolean isD() {
+		return false;
+	}
+	
 	/*
 	 * Returns a pair, containing itself and a boolean, indicating if the targeting was successful.
 	 * Will be non-successful if it isn't called on an ApplyFunction

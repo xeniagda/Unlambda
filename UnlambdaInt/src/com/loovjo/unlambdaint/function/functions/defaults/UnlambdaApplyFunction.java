@@ -61,8 +61,14 @@ public class UnlambdaApplyFunction extends TargetedUnlambdaFunction {
 	public Pair<TargetedUnlambdaFunction, Boolean> findAndSetTarget() {
 
 		// Try to target call and arg.
-
-		for (TargetedUnlambdaFunction func : new TargetedUnlambdaFunction[] { call, arg }) {
+		
+		TargetedUnlambdaFunction[] order = new TargetedUnlambdaFunction[] { call, arg };
+		
+		if (getDeepFunctionApplied() instanceof UnlambdaDFunction && getDeepFunctionDepth() == 1) {
+			order = new TargetedUnlambdaFunction[] { arg, call };
+		}
+		
+		for (TargetedUnlambdaFunction func : order) {
 			// Recurse
 			Pair<TargetedUnlambdaFunction, Boolean> target = func.findAndSetTarget();
 			if (target.getSecond())
@@ -104,7 +110,19 @@ public class UnlambdaApplyFunction extends TargetedUnlambdaFunction {
 		}
 		return "`" + call.getUnlCode(targets) + arg.getUnlCode(targets);
 	}
-
+	
+	public TargetedUnlambdaFunction getDeepFunctionApplied() {
+		if (call instanceof UnlambdaApplyFunction)
+			return ((UnlambdaApplyFunction) call).getDeepFunctionApplied();
+		return call;
+	}
+	
+	public int getDeepFunctionDepth() {
+		if (call instanceof UnlambdaApplyFunction)
+			return ((UnlambdaApplyFunction) call).getDeepFunctionDepth() + 1;
+		return 0;
+	}
+	
 	public UnlambdaFunction applyToTarget() {
 		if (isTargeted) {
 			return apply(arg);
