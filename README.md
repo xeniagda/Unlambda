@@ -1,7 +1,7 @@
 # Unlambda
 
 
-Unlambda is a "purely functional programming language" made by David Madore. It is based on combinatory logic. You can read more about it here: [http://www.madore.org/~david/programs/unlambda/](The unlambda programming lanugage).
+Unlambda is a "purely functional programming language" made by David Madore. It is based on combinatory logic. You can read more about it here: (The unlambda programming lanugage)[http://www.madore.org/~david/programs/unlambda/].
 
 # About this interpreter
 
